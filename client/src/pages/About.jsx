@@ -6,7 +6,7 @@ function About() {
       <Header buttonStatus={"About"} />
       <div className="mt-10">
         <h1 className="text-6xl font-bold text-center">About Us</h1>
-        <p className=" text-2xl font-medium px-50 py-8 leading-normal">
+        <p className=" text-2xl  px-50 py-8 ">
           At AutoSpot, you're just one click away from your dream ride! Whether
           you're buying your first car or upgrading to something new, we make
           the entire process smooth, secure, and stress-free. Our mission is to

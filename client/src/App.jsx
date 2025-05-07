@@ -5,6 +5,8 @@ import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Catalog from "./pages/Catalog";
+import UserOnlyRoute from "./components/UserOnlyRoute";
+
 function App() {
   return (
     <div>
@@ -13,8 +15,22 @@ function App() {
           <Route path="/" element={<About />}></Route>
           <Route path="/registration" element={<Registration />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/catalog" element={<Catalog />}></Route>
+          <Route
+            path="/profile"
+            element={
+              <UserOnlyRoute>
+                <Profile />
+              </UserOnlyRoute>
+            }
+          ></Route>
+          <Route
+            path="/catalog"
+            element={
+              <UserOnlyRoute>
+                <Catalog />
+              </UserOnlyRoute>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>
