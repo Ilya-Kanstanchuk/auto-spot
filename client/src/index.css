@@ -4,6 +4,8 @@
 @theme {
   --color-mainblue: #171e4b;
   --color-btnheader: #85a1fb;
+  --color-loginbg: #d1eef7;
+  --color-lightgray: #eae9e9;
 }
 
 body {
