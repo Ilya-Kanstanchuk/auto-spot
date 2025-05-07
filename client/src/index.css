@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --color-mainblue: #171e4b;
+  --color-btnheader: #85a1fb;
+}
+
 body {
   font-family: "Inter", sans-serif;
   letter-spacing: -0.5px;
