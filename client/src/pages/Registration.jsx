@@ -69,12 +69,12 @@ function Registration() {
               required
             />
           </div>
+          {errorMessage && (
+            <div className="text-red-600 text-[17px] text-center">
+              {errorMessage}
+            </div>
+          )}
           <div className="flex justify-center items-center">
-            {errorMessage && (
-              <div className="text-red-600 text-[17px] text-center mb-4">
-                {errorMessage}
-              </div>
-            )}
             <button
               type="submit"
               className="mt-6 mb-6 py-3 px-20 text-white font-bold text-[15px] bg-mainblue rounded cursor-pointer"
@@ -85,7 +85,7 @@ function Registration() {
           <div className="flex flex-col justify-center items-center">
             <p>Already have an account?</p>
             <Link to="/login" className="text-blue-600 font-bold">
-              Sign up now
+              Log in
             </Link>
           </div>
         </form>
