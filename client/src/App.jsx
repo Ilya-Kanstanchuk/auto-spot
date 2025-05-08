@@ -27,14 +27,7 @@ function App() {
               </UserOnlyRoute>
             }
           ></Route>
-          <Route
-            path="/catalog"
-            element={
-              <ProtectedRoute>
-                <Catalog />
-              </ProtectedRoute>
-            }
-          ></Route>
+          <Route path="/catalog" element={<Catalog />}></Route>
           <Route
             path="/adminpanel"
             element={

@@ -28,4 +28,13 @@ router.post("/add", upload.single("image"), async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const offers = await Offer.find({ approved: true });
+    return res.status(200).json({ success: true, offers });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "Error" });
+  }
+});
+
 export default router;
