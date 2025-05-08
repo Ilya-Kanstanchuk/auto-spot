@@ -36,12 +36,33 @@ function Header({ buttonStatus }) {
       </div>
       {user ? (
         <>
-          <Link to={"/profile"}>
-            <div className="pr-10 py-7 flex items-center">
-              <img className="w-[40px] h-[38px]" src="/profile.png" alt="" />
-              <p className="font-bold text-xl">Your Profile</p>
-            </div>
-          </Link>
+          {user.role === "user" ? (
+            <>
+              <Link to={"/profile"}>
+                <div className="pr-10 py-7 flex items-center">
+                  <img
+                    className="w-[40px] h-[38px]"
+                    src="/profile.png"
+                    alt=""
+                  />
+                  <p className="font-bold text-xl">Your Profile</p>
+                </div>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to={"/adminpanel"}>
+                <div className="pr-10 py-7 flex items-center">
+                  <img
+                    className="w-[40px] h-[38px]"
+                    src="/profile.png"
+                    alt=""
+                  />
+                  <p className="font-bold text-xl">Admin Panel</p>
+                </div>
+              </Link>
+            </>
+          )}
         </>
       ) : (
         <>

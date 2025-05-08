@@ -19,7 +19,12 @@ const middleware = async (req, res, next) => {
         .status(401)
         .json({ success: false, message: "User was not found" });
     }
-    const newUser = { name: user.name, id: user._id };
+    const newUser = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
     req.user = newUser;
     next();
   } catch (error) {

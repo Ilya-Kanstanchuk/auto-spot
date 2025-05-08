@@ -6,6 +6,10 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Catalog from "./pages/Catalog";
 import UserOnlyRoute from "./components/UserOnlyRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminOnlyRoute from "./components/AdminOnlyRoute";
+import AdminPanel from "./pages/AdminPanel";
+import CreateOffer from "./pages/CreateOffer";
 
 function App() {
   return (
@@ -26,8 +30,24 @@ function App() {
           <Route
             path="/catalog"
             element={
-              <UserOnlyRoute>
+              <ProtectedRoute>
                 <Catalog />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/adminpanel"
+            element={
+              <AdminOnlyRoute>
+                <AdminPanel />
+              </AdminOnlyRoute>
+            }
+          ></Route>
+          <Route
+            path="/create"
+            element={
+              <UserOnlyRoute>
+                <CreateOffer />
               </UserOnlyRoute>
             }
           ></Route>
