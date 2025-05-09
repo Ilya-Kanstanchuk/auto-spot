@@ -40,6 +40,7 @@ function Filters({
     "Lexus",
     "Mazda",
     "Subaru",
+    "Mitsubishi",
     "Jeep",
     "Tesla",
     "Volvo",

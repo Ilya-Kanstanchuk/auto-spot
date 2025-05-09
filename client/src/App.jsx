@@ -10,7 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AdminOnlyRoute from "./components/AdminOnlyRoute";
 import AdminPanel from "./pages/AdminPanel";
 import CreateOffer from "./pages/CreateOffer";
-
+import Offer from "./pages/Offer";
 function App() {
   return (
     <div>
@@ -28,6 +28,7 @@ function App() {
             }
           ></Route>
           <Route path="/catalog" element={<Catalog />}></Route>
+          <Route path="/offer/:id" element={<Offer />}></Route>
           <Route
             path="/adminpanel"
             element={

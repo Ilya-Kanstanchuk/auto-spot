@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import OfferCard from "../components/OfferCard";
 import Filters from "../components/Filters";
@@ -54,10 +54,12 @@ function Catalog() {
           <div className="grid grid-cols-[3fr_1fr] gap-20">
             <div>
               {filteredOffers.map((offer) => (
-                <OfferCard offer={offer} />
+                <Link to={`/offer/${offer._id}`} className="cursor-pointer">
+                  <OfferCard offer={offer} />
+                </Link>
               ))}
             </div>
-            <div className="mt-3">
+            <div className="mt-3 flex items-center flex-col">
               <Filters
                 setBrand={setBrand}
                 setType={setType}
@@ -66,16 +68,16 @@ function Catalog() {
                 setMinYear={setMinYear}
                 setMaxYear={setMaxYear}
               />
+              <button
+                onClick={() => navigate("/create")}
+                className="text-white mt-7 text-xl font-bold py-3 px-11 bg-addbtn rounded cursor-pointer"
+              >
+                Add your offer
+              </button>
             </div>
           </div>
         </div>
       </div>
-      {/* <button
-        onClick={() => navigate("/create")}
-        className="text-white text-xl font-bold py-3 px-11 bg-addbtn rounded cursor-pointer"
-      >
-        Add your offer
-      </button> */}
     </div>
   );
 }

@@ -47,4 +47,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/find/:id", async (req, res) => {
+  try {
+    const offerId = req.params.id;
+    const offer = await Offer.findOne({ _id: offerId });
+    return res.status(200).json({ success: true, offer });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "Error" });
+  }
+});
+
 export default router;

@@ -71,7 +71,7 @@ function Registration() {
           </div>
           <div className="flex justify-center items-center">
             <p>New to AutoSpot?</p>
-            <Link to="/login" className="text-blue-600 font-bold">
+            <Link to="/registration" className="text-blue-600 font-bold">
               Sign up now
             </Link>
           </div>
