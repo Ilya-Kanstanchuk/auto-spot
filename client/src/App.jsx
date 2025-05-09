@@ -11,6 +11,7 @@ import AdminOnlyRoute from "./components/AdminOnlyRoute";
 import AdminPanel from "./pages/AdminPanel";
 import CreateOffer from "./pages/CreateOffer";
 import Offer from "./pages/Offer";
+import MyOffers from "./pages/MyOffers";
 function App() {
   return (
     <div>
@@ -24,6 +25,14 @@ function App() {
             element={
               <UserOnlyRoute>
                 <Profile />
+              </UserOnlyRoute>
+            }
+          ></Route>
+          <Route
+            path="/profile/myoffers"
+            element={
+              <UserOnlyRoute>
+                <MyOffers />
               </UserOnlyRoute>
             }
           ></Route>
