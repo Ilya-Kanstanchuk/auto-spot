@@ -5,8 +5,17 @@ const router = express.Router();
 
 router.post("/add", upload.single("image"), async (req, res) => {
   try {
-    const { brand, model, price, year, mileage, type, description, userId } =
-      req.body;
+    const {
+      brand,
+      model,
+      price,
+      year,
+      mileage,
+      type,
+      description,
+      userId,
+      userEmail,
+    } = req.body;
     const imageUrl = req.file.path;
     const newOffer = new Offer({
       brand: brand,
@@ -18,6 +27,7 @@ router.post("/add", upload.single("image"), async (req, res) => {
       description: description,
       imageURL: imageUrl,
       userId: userId,
+      userEmail: userEmail,
     });
     await newOffer.save();
     return res

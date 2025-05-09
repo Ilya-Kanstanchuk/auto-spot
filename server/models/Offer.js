@@ -10,6 +10,7 @@ const OfferSchema = new mongoose.Schema({
   description: { type: String, required: true },
   imageURL: { type: String, required: true },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  userEmail: { type: String, required: true },
   approved: { type: Boolean, default: false },
 });
 

@@ -17,6 +17,7 @@ function CreateOffer() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const userId = user.id;
+  const userEmail = user.email;
   async function handleSubmit(e) {
     e.preventDefault();
     if (!image) return alert("Choose an image");
@@ -30,6 +31,7 @@ function CreateOffer() {
     formData.append("description", description);
     formData.append("image", image);
     formData.append("userId", userId);
+    formData.append("userEmail", userEmail);
     try {
       const responce = await axios.post(`${API_URL}/offer/add`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
