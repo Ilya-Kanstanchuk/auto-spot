@@ -12,6 +12,7 @@ import AdminPanel from "./pages/AdminPanel";
 import CreateOffer from "./pages/CreateOffer";
 import Offer from "./pages/Offer";
 import MyOffers from "./pages/MyOffers";
+import ModifyOffer from "./pages/ModifyOffer";
 function App() {
   return (
     <div>
@@ -51,6 +52,14 @@ function App() {
             element={
               <UserOnlyRoute>
                 <CreateOffer />
+              </UserOnlyRoute>
+            }
+          ></Route>
+          <Route
+            path="/offer/modify/:id"
+            element={
+              <UserOnlyRoute>
+                <ModifyOffer />
               </UserOnlyRoute>
             }
           ></Route>

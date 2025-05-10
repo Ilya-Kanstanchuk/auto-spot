@@ -1,8 +1,9 @@
 import React from "react";
 
-function SmallOfferCard({ offer, userDelete }) {
-  function modificationHandler(e) {
+function SmallOfferCard({ offer, userDelete, userMod }) {
+  async function modificationHandler(e) {
     e.preventDefault();
+    await userMod(offer);
   }
   async function deleteHandler(e) {
     e.preventDefault();
@@ -20,6 +21,27 @@ function SmallOfferCard({ offer, userDelete }) {
               {offer.brand} {offer.model}
             </p>
             <p className="font-semibold">{offer.price} $</p>
+            <div>
+              {offer.approved ? (
+                <>
+                  <p>
+                    Status:{" "}
+                    <span className="py-1 px-2 bg-green-300/50 rounded-3xl">
+                      approved
+                    </span>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Status:{" "}
+                    <span className="py-1 px-2 bg-red-300/50 rounded-3xl">
+                      waiting for approvement
+                    </span>
+                  </p>
+                </>
+              )}
+            </div>
           </div>
         </div>
         <div className="ml-40 mt-1">

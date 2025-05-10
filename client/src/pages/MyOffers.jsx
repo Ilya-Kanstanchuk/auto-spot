@@ -22,6 +22,10 @@ function MyOffers() {
       console.log(error);
     }
   }
+  async function userMod(offer) {
+    const id = offer._id;
+    navigate(`/offer/modify/${id}`);
+  }
   async function fetchMyOffers() {
     try {
       const responce = await axios.get(`${API_URL}/offer/my`, {
@@ -61,7 +65,11 @@ function MyOffers() {
           <div>
             {myOffers.map((offer) => (
               <Link to={`/offer/${offer._id}`} className="cursor-pointer">
-                <SmallOfferCard offer={offer} userDelete={userDelete} />
+                <SmallOfferCard
+                  offer={offer}
+                  userDelete={userDelete}
+                  userMod={userMod}
+                />
               </Link>
             ))}
           </div>

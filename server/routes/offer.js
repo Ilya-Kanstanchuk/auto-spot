@@ -39,6 +39,45 @@ router.post("/add", upload.single("image"), async (req, res) => {
   }
 });
 
+router.put("/update/image/:id", upload.single("image"), async (req, res) => {
+  const imageUrl = req.file.path;
+  const id = req.params.id;
+  try {
+    const offer = await Offer.findByIdAndUpdate(id, { imageURL: imageUrl });
+    if (!offer) {
+      return res.status(401).json({ success: false, message: "Update failed" });
+    }
+    return res
+      .status(200)
+      .json({ success: true, message: "Updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ succes: false, message: "Error" });
+  }
+});
+router.put("/update/:id", async (req, res) => {
+  const { brand, model, price, year, mileage, type, description } = req.body;
+  const id = req.params.id;
+  try {
+    const offer = await Offer.findByIdAndUpdate(id, {
+      brand: brand,
+      model: model,
+      price: price,
+      year: year,
+      mileage: mileage,
+      type: type,
+      description: description,
+    });
+    if (!offer) {
+      return res.status(401).json({ success: false, message: "Update failed" });
+    }
+    return res
+      .status(200)
+      .json({ success: true, message: "Updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ succes: false, message: "Error" });
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     const offers = await Offer.find({ approved: true });
