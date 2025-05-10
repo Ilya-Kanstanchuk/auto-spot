@@ -4,7 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import OfferCard from "../components/OfferCard";
 import Filters from "../components/Filters";
+import { useAuth } from "../context/contextProvider";
 function Catalog() {
+  const { user } = useAuth();
   const API_URL = import.meta.env.VITE_API_URL;
   const [allOffers, setAllOffers] = useState([]);
   const [filteredOffers, setFilteredOffers] = useState([]);
@@ -15,6 +17,23 @@ function Catalog() {
   const [minYear, setMinYear] = useState("1980");
   const [maxYear, setMaxYear] = useState("2025");
   const navigate = useNavigate();
+  async function adminDelete(offer) {
+    const id = offer._id;
+    try {
+      const response = await axios.delete(
+        `${API_URL}/admin/delete/offer/${id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      console.log(response);
+      if (response.data.success) {
+        fetchOffers();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async function fetchOffers() {
     try {
       const response = await axios.get(`${API_URL}/offer/`);
@@ -55,7 +74,11 @@ function Catalog() {
             <div>
               {filteredOffers.map((offer) => (
                 <Link to={`/offer/${offer._id}`} className="cursor-pointer">
-                  <OfferCard offer={offer} />
+                  <OfferCard
+                    offer={offer}
+                    role={user ? user.role : ""}
+                    adminDelete={adminDelete}
+                  />
                 </Link>
               ))}
             </div>
