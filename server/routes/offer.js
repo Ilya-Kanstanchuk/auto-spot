@@ -57,6 +57,25 @@ router.get("/my", middleware, async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", middleware, async (req, res) => {
+  try {
+    const offer = await Offer.findOneAndDelete({
+      userId: req.user.id,
+      _id: req.params.id,
+    });
+    if (!offer) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Something went wrong" });
+    }
+    return res
+      .status(200)
+      .json({ success: true, message: "Ffer was deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "Error" });
+  }
+});
+
 router.get("/find/:id", async (req, res) => {
   try {
     const offerId = req.params.id;
