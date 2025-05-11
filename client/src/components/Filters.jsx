@@ -31,6 +31,7 @@ function Filters({
     "Honda",
     "Chevrolet",
     "BMW",
+    "Mustang",
     "Opel",
     "Mercedes-Benz",
     "Hyundai",
